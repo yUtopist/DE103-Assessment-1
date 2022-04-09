@@ -1,0 +1,5 @@
+Referrer Type is fluid
+Even though referrer type swap for Hilary Trump, Linda Moore and Ralph Smith are most likely an data insertion error, there is a possobility that referrer could change the place of work from other clinic to Sysmex clinic and therefore would change its type. From there we would have a problem with this database design - in the record referral going to have a current referrer type and not the type of them on the moment of record creation. The proper way, in my opinion, would be to have an atribute on Referral entity which corresponds to referrer type on the moment of record creation. but in this particular database design i would not develop it this way, instead i would assume that the referrer type swap was a human mistake and should not be the case.
+
+9/04
+Scrapped the idea with having a separate table for referrer.
