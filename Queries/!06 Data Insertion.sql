@@ -73,24 +73,21 @@ FIELDTERMINATOR = ',',
 ROWTERMINATOR = '\n'
 );
 GO
-
 */
-/*
+
+DELETE FROM Referrer
 
 INSERT INTO Referrer (refName, refType)
 SELECT DISTINCT refName, refType
-FROM Referrer_Staging Staging
+FROM Referrer_Staging
 WHERE NOT EXISTS (
-SELECT *
-FROM Referrer AS Main
-WHERE Main.refName = Staging.refName
-)
-
+	SELECT * FROM Referrer
+	WHERE Referrer.refName = Referrer_Staging.refName
+	)
 GO
 
-*/
 
---DELETE FROM Referrer
+--DELETE FROM Referrer_Staging
 SELECT * FROM Referrer
 
 
