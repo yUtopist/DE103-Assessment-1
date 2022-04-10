@@ -4,91 +4,68 @@
 -- Staging table to Main table but only to specific column while ignoring Primary ID Key,
 -- therefor autogenerating it with SQL Server.
 
-/*
-CREATE TABLE Department_Staging (
-depName VARCHAR(255) NOT NULL
-);
-GO
-
-BULK INSERT Department_Staging
-FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\Department.csv'
+-- Bulk Inserting to the tables which have no dependent attributes.
+-- Since all the Data is already shaped with python, we have nothing to worry about
+BULK INSERT Department
+FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\! DepartmentID + Department'
 WITH (
 FIELDTERMINATOR = ',',
 ROWTERMINATOR = '\n'
 );
 GO
 
-INSERT INTO Department (depName)
-SELECT DISTINCT depName
-FROM Department_Staging Staging
-WHERE NOT EXISTS (
-SELECT *
-FROM Department AS Main
-WHERE Main.depName = Staging.depName
-)
+BULK INSERT Referrer
+FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\! ReferrerID + Referrer + ReferrerType'
+WITH (
+FIELDTERMINATOR = ',',
+ROWTERMINATOR = '\n'
+);
 GO
 
--- Deleting Temp Table
-DROP TABLE Department_Staging
+BULK INSERT Patient
+FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\! NHI + PatientName + DOB + Gender + errorNHI'
+WITH (
+FIELDTERMINATOR = ',',
+ROWTERMINATOR = '\n'
+);
 GO
 
+-- Creating staging tables for bulk insertion without limitation.
 CREATE TABLE Surgeon_Staging (
-surgName VARCHAR(255) NOT NULL,
-depName VARCHAR(255) NOT NULL
+surgID SMALLINT IDENTITY PRIMARY KEY,
+surgName VARCHAR(65) NOT NULL,
+depName VARCHAR(30) NOT NULL
+);
+GO
+
+CREATE TABLE Referral_Staging (
+refDate VARCHAR(10) NOT NULL,
+refName VARCHAR(65) NOT NULL,
+patNHI VARCHAR(7) NOT NULL,
+surgName VARCHAR(65) NOT NULL,
+waitListDate VARCHAR(10) NOT NULL,
+FSA VARCHAR(10),
+eligible VARCHAR(3)
 );
 GO
 
 BULK INSERT Surgeon_Staging
-FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\Surgeon + Department.csv'
+FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\! SurgeonID + Surgeon + Department'
 WITH (
 FIELDTERMINATOR = ',',
 ROWTERMINATOR = '\n'
 );
 GO
 
-INSERT INTO Surgeon (surgName, depID) 
-SELECT DISTINCT surgName, depID
-FROM Surgeon_Staging Staging, Department
-WHERE NOT EXISTS (
-SELECT *
-FROM Surgeon AS Main
-WHERE Main.surgName = Staging.surgName
-)
-AND Department.depName = Staging.depName
-
--- Deleting Temp Table
-DROP TABLE Surgeon_Staging
-GO
-
-CREATE TABLE Referrer_Staging (
-refName VARCHAR(255) NOT NULL,
-refType VARCHAR(255) NOT NULL
-);
-GO
-
-BULK INSERT Referrer_Staging
-FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\Referrer + ReferrerType.csv'
+BULK INSERT Referral_Staging
+FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\ReferralDate + Referrer + NHI + Surgeon + WaitListDate + FSA + Eligibility.csv'
 WITH (
 FIELDTERMINATOR = ',',
 ROWTERMINATOR = '\n'
 );
 GO
-*/
-
-DELETE FROM Referrer
-
-INSERT INTO Referrer (refName, refType)
-SELECT DISTINCT refName, refType
-FROM Referrer_Staging
-WHERE NOT EXISTS (
-	SELECT * FROM Referrer
-	WHERE Referrer.refName = Referrer_Staging.refName
-	)
-GO
 
 
---DELETE FROM Referrer_Staging
-SELECT * FROM Referrer
 
 
 /*

@@ -109,12 +109,18 @@ for index, item in enumerate(patientDataList):
     patientDOB = patientSplit[2].strip()
     patientGender = patientSplit[3].strip()
     #
+    # Formating Date to a SQL standart
+    dateSplit = patientDOB.split('/')
+    dateDay = dateSplit[0]
+    dateMonth = dateSplit[1]
+    dateYear = dateSplit[2]
+    #
     # Creating temprory dictionary to then insert it to new list
     patientEntry = {
         'NHI': patientNHI,
         'name': patientName,
-        'DOB': patientDOB,
-        'gender': patientGender,
+        'DOB': f'{dateYear}-{dateMonth}-{dateDay}',
+        'gender': patientGender[:1],
         'errorNHI': ''
     }
     #
@@ -143,7 +149,7 @@ for index, item in enumerate(patientDataList):
             patientEntry['errorNHI'] = patientNHI
 
             patientNHIErrorCounter += 1
-        patientShapedData += f"{patientEntry['NHI']},{patientName},{patientDOB},{patientGender}\n"
+        patientShapedData += f"{patientEntry['NHI']},{patientName},{patientEntry['DOB']},{patientEntry['gender']}\n"
         #
         # We need to add new entry to the checking list at the end so all of the changes
         # are done prier to it.
