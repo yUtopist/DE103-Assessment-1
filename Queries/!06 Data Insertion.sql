@@ -6,6 +6,7 @@
 
 -- Bulk Inserting to the tables which have no dependent attributes.
 -- Since all the Data is already shaped with python, we have nothing to worry about
+/*
 BULK INSERT Department
 FROM 'C:\Users\sever\OneDrive - Ara Institute of Canterbury\_COURSES\DE103 Database Design\DE103-Assessment-1\DATA\! DepartmentID + Department'
 WITH (
@@ -65,9 +66,22 @@ ROWTERMINATOR = '\n'
 );
 GO
 
+INSERT INTO Surgeon (surgName, depID)
+SELECT surgName, depID
+FROM Surgeon_Staging S, Department D
+WHERE S.depName = D.depName
+*/
 
+INSERT INTO Referral (refDate, refID, patNHI, surgID, waitListDate, FSA, eligible)
+SELECT refDate, refID, patNHI, surgID, CAST(waitListDate AS DATE), CAST(FSA AS DATE), eligible
+FROM Referral_Staging Stg, Referrer R, Surgeon S
+WHERE Stg.refName = R.refName
+AND Stg.surgName = S.surgName
 
-
+--SELECT waitListDate FROM Referral_Staging
+--SELECT * From Referral
+--SELECT * FROM Patient
+--SELECT * FROM Surgeon
 /*
 -- WORKING Example of String separation
 SELECT
