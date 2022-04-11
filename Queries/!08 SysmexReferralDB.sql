@@ -1,3 +1,4 @@
+
 CREATE DATABASE SysmexReferralDB;
 GO
 USE SysmexReferralDB;
