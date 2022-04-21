@@ -1,4 +1,9 @@
+--
 -- This query will give a list of all patients under 18 at the time of referral and having sugeon assigned from any other than paediatric department
+
+--
+-- If this is the first query to run, we need to use the correct Database with this command
+-- USE SysmexReferralDB;
 
 SELECT
 	-- Date Information
@@ -18,9 +23,7 @@ SELECT
 	-- Technicalities
 ,	FORMAT(waitListDate, 'dd/MM/yyyy') AS 'Added to Waitlist Date'
 ,	FORMAT(FSA, 'dd/MM/yyyy') AS 'FSA Date'
-,	CASE
-		WHEN eligible = '1' THEN 'Yes'
-		WHEN eligible = '0' THEN 'No' END AS 'Health Target Eligible'
+,	DATEDIFF(day, refDate, FSA) AS 'Days Waited'
 FROM Referral m
 WHERE DATEDIFF(year, (SELECT patDOB FROM Patient t WHERE t.patNHI = m.patNHI), refDate) < 18
 AND (SELECT depName	FROM Surgeon t INNER JOIN Department d ON t.depID = d.depID	WHERE m.surgID = t.surgID) != 'Paediatric Surgery'
