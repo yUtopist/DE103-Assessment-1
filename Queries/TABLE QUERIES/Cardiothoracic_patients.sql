@@ -3,7 +3,7 @@
 --	At the bottom, commented out, simplified version of the list.
 
 --
---	If this is the first query to run, we need to use the correct Database with this command
+--	If this is the first query to run, we need to use the correct Database with this command.
 --	USE SysmexReferralDB;
 
 SELECT

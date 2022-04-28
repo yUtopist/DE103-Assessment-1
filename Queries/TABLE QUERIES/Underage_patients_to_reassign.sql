@@ -1,8 +1,8 @@
 --
---	This query will give a list of all patients under 18 at the time of referral and having sugeon assigned from any other than paediatric department
+--	This query will give a list of all patients under 18 at the time of referral and having sugeon assigned from any other than paediatric department.
 
 --
---	If this is the first query to run, we need to use the correct Database with this command
+--	If this is the first query to run, we need to use the correct Database with this command.
 --	USE SysmexReferralDB;
 
 SELECT

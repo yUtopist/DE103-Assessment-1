@@ -1,5 +1,10 @@
 --
 --	This query will give a list of all the patients, that have been seen by the surgeon and the time it took for waiting, sorted by surgeon.
+
+--
+--	If this is the first query to run, we need to use the correct Database with this command.
+--	USE SysmexReferralDB;
+
 SELECT
 	(SELECT surgName FROM Surgeon t WHERE m.surgID = t.surgID) AS 'Surgeon'
 ,	(SELECT depName	FROM Surgeon t INNER JOIN Department d ON t.depID = d.depID	WHERE m.surgID = t.surgID) AS 'Department'
