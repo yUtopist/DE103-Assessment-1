@@ -1,0 +1,64 @@
+DE103-Assessment-1
+├──DATA
+│  ├──!DepartmentID-Department.csv
+│  ├──!NHI-PatientName-DOB-Gender-errorNHI.csv
+│  ├──!ReferralDate-Referrer-NHI-Surgeon-WaitListDate-FSA-Eligibility.csv
+│  ├──!ReferrerID-Referrer-ReferrerType.csv
+│  ├──!Surgeon-Department.csv
+│  ├──Department.csv
+│  ├──NHI + PatientName + DOB + Gender.csv
+│  ├──ReferralDate + Referrer + NHI + Surgeon + WaitListDate + FSA + Eligibility.csv
+│  ├──Referrer + ReferrerType.csv
+│  ├──Surgeon + Department.csv
+│  └──ARA DATA Wait Lists Feb 2021.xlsx
+├──Diagrams
+│  ├──!01 Assessment-1 sketch.drawio
+│  ├──!01 Assessment-1 sketch.pdf
+│  ├──!02 Assessment-1 ERD.drawio
+│  ├──!02 Assessment-1 ERD.pdf
+│  ├──!03 Assessment-1 ERD Error Catching.drawio
+│  ├──!03 Assessment-1 ERD Error Catching.pdf
+│  ├──!04 Assessment-1 ERD.drawio
+│  ├──!04 Assessment-1 ERD.pdf
+│  ├──!05 Assessment-1 ERD.drawio
+│  ├──!05 Assessment-1 ERD.pdf
+│  ├──!06 Assessment-1 ERD.drawio
+│  ├──!06 Assessment-1 ERD.pdf
+│  ├──!07 Assessment-1 ERD.drawio
+│  ├──!07 Assessment-1 ERD.pdf
+│  ├──!08 Assessment-1 ERD.drawio
+│  ├──!08 Assessment-1 ERD.pdf
+│  ├──!09 Assessment-1 ERD.drawio
+│  ├──!09 Assessment-1 ERD.pdf
+│  ├──!10 Assessment-1 ERD Simplified.drawio
+│  ├──!10 Assessment-1 ERD Simplified.pdf
+│  ├──!11 Assessment-1 ERD Simplified REWORK.drawio
+│  └──!11 Assessment-1 ERD Simplified REWORK.pdf
+├──Python
+│  └──!DATA_Shaper.py
+├──Queries
+│  ├──DATABASE AND DATA
+│  │  ├──Data Insertion.sql
+│  │  └──SysmexReferralDB.sql
+│  ├──TABLE QUERIES
+│  │  ├──! Referrals.sql
+│  │  ├──Average_Time_By_Surgeon_and_Department.sql
+│  │  ├──Cardiothoracic_patients.sql
+│  │  ├──Patients_Days_Waited.sql
+│  │  ├──Seen_In_75_Days_By_Department.sql
+│  │  └──Underage_patients_to_reassign.sql
+│  ├──!01 Initial DB build by ERD N.5.sql
+│  ├──!02 Changed Queries to include ReferrerType.sql
+│  ├──!02 ReferrerType Table.sql
+│  ├──!03 SysmexReferralDB and Tables (with NOT NULL) - Copy.sql
+│  ├──!04 SysmexReferralDB.sql
+│  ├──!05 Adding Data to Tables.sql
+│  ├──!06 Data Insertion.sql
+│  ├──!06 SysmexReferralDB.sql
+│  └──!07 SysmexReferralDB.sql
+├──DE103 Assessment by Aleksei Stukalov.docx
+├──Error List.docx
+├──Folder Hierarchy.txt
+├──Notes.txt
+└──Sysmex Hospital Referral Data Dictionary.docx
+
