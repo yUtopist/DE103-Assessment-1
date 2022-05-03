@@ -56,9 +56,8 @@ DE103-Assessment-1
 │  ├──!06 Data Insertion.sql
 │  ├──!06 SysmexReferralDB.sql
 │  └──!07 SysmexReferralDB.sql
-├──DE103 Assessment by Aleksei Stukalov.docx
-├──Error List.docx
-├──Folder Hierarchy.txt
-├──Notes.txt
-└──Sysmex Hospital Referral Data Dictionary.docx
+├──Aleksei Stukalov Design Assignment Data Dictionary.docx
+├──Aleksei Stukalov Design Assignment Error List.docx
+├──Aleksei Stukalov Design Assignment Folder Hierarchy.txt
+└──Aleksei Stukalov Design Assignment Report.docx
 
